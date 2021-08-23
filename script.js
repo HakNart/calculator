@@ -21,9 +21,9 @@ function operate(operator, a, b) {
 
 // Create an object that holds all the values and operator
 let storedCalculation = {
-    firstNum: 0,
-    sencondNum: null,
-    operator: add, 
+    storedNum: null,
+    // sencondNum: null,
+    operator: null, 
     result: 0,
 }
 
@@ -34,13 +34,47 @@ function display(num) {
 }
 
 // Handle when digit button is clicked and displayed on the screen
-let number = '';
+let currentNumber = '';
 const digitButtons = document.querySelectorAll(".digit");
 digitButtons.forEach(digitButton => {
     digitButton.addEventListener('click', fillDigit)
 });
 
 function fillDigit() {
-    number += this.textContent;
-    display(number);
+    currentNumber += this.textContent;
+    display(currentNumber);
+}
+
+// Handle opertors when clicked
+const operators = document.querySelectorAll(".operator");
+operators.forEach(operator => {
+    operator.addEventListener('click', executeOperation);
+})
+
+function executeOperation() {
+    if (!storedCalculation.storedNum) {
+        storedCalculation.storedNum = Number(currentNumber);
+    } else {
+        let result = operate(storedCalculation.operator, storedCalculation.storedNum, Number(currentNumber));
+        storedCalculation.storedNum = result;
+        display(result);
+
+    }  
+    storedCalculation.operator = assignOperator(this.id);
+    currentNumber = '';
+    console.log("Current number: " + currentNumber)
+}
+
+// Return operator function based on the string input
+function assignOperator(str) {
+    switch (str) {
+        case 'division':
+            return divide;
+        case 'multiplication':
+            return multiply;
+        case 'subtraction':
+            return subtract;
+        case 'addition':
+            return add;
+    }
 }
