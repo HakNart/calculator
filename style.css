@@ -1,4 +1,10 @@
+#display {
+    width: 450px;
+    height: 30px;
+}
+
 #buttons {
+    width: 450px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
