@@ -34,13 +34,13 @@ function display(num) {
 }
 
 // Handle when digit button is clicked and displayed on the screen
-let initialNum = '';
+let number = '';
 const digitButtons = document.querySelectorAll(".digit");
 digitButtons.forEach(digitButton => {
     digitButton.addEventListener('click', fillDigit)
 });
 
 function fillDigit() {
-    initialNum += this.textContent;
-    display(initialNum);
+    number += this.textContent;
+    display(number);
 }
