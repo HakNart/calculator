@@ -32,3 +32,15 @@ const screen = document.querySelector('#display');
 function display(num) {
     screen.textContent = num;
 }
+
+// Handle when digit button is clicked and displayed on the screen
+let initialNum = '';
+const digitButtons = document.querySelectorAll(".digit");
+digitButtons.forEach(digitButton => {
+    digitButton.addEventListener('click', fillDigit)
+});
+
+function fillDigit() {
+    initialNum += this.textContent;
+    display(initialNum);
+}
