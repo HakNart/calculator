@@ -59,21 +59,31 @@ operators.forEach(operator => {
     operator.addEventListener('click', executeOperation);
 })
 
-function executeOperation() {
+function executeOperation() {    
     if (!storedCalculation.firstNum) {
         storedCalculation.firstNum = Number(currentNumber);
         currentNumber = '';
-    } else if (isValidOperation()) {
+    }
+    else if (checkOperation() == 'divide by zero') {
+        display("Careful buddy! Too far");
+    } 
+    else if (checkOperation() === 'valid') {
         let result = operate(storedCalculation.operator, storedCalculation.firstNum, Number(currentNumber));
         storedCalculation.firstNum = result;
         display(round(result));
         currentNumber = '';
     }
     storedCalculation.operator = assignOperator(this.id);
+    
 }
 
-function isValidOperation() {
-    return storedCalculation.firstNum && storedCalculation.operator && currentNumber;
+function checkOperation() {
+    if (storedCalculation.operator == divide && currentNumber == '0') {
+        return 'divide by zero';
+    }
+    if (storedCalculation.firstNum && storedCalculation.operator && currentNumber) {
+        return 'valid';
+    } 
 }
 
 // Round the number up to 6 decimal
