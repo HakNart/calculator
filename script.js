@@ -58,7 +58,7 @@ function executeOperation() {
     } else if (isValidOperation()) {
         let result = operate(storedCalculation.operator, storedCalculation.firstNum, Number(currentNumber));
         storedCalculation.firstNum = result;
-        display(result);
+        display(round(result));
         currentNumber = '';
     }
     storedCalculation.operator = assignOperator(this.id);
@@ -66,6 +66,11 @@ function executeOperation() {
 
 function isValidOperation() {
     return storedCalculation.firstNum && storedCalculation.operator && currentNumber;
+}
+
+// Round the number up to 6 decimal
+function round(value) {
+    return Number(Math.round(value + 'e6') + 'e-6') //Can change the decimal number for other function
 }
 
 // Return operator function based on the string input
