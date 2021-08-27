@@ -19,12 +19,16 @@ function operate(operator, a, b) {
     return operator(a, b);
 }
 
+// Default state when data is clear
+const DEFAULT_CALCULATION = {
+    firstNum: null,
+    operator: null, 
+}
+
 // Create an object that holds all the values and operator
 let storedCalculation = {
     firstNum: null,
-    secondNum: null,
     operator: null, 
-    result: 0,
 }
 
 // Function to display values on the screen
@@ -34,14 +38,18 @@ function display(num) {
 }
 
 // Handle when digit button is clicked and displayed on the screen
-let currentNumber = '';
+let currentNumber = '0';
 const digitButtons = document.querySelectorAll(".digit");
 digitButtons.forEach(digitButton => {
     digitButton.addEventListener('click', fillDigit)
 });
 
 function fillDigit() {
-    currentNumber += this.textContent;
+    if (currentNumber === '0') {
+        currentNumber = this.textContent;
+    } else {
+        currentNumber += this.textContent;
+    }
     display(currentNumber);
 }
 
@@ -85,4 +93,19 @@ function assignOperator(str) {
         case 'addition':
             return add;
     }
+}
+
+// Clear button should wipe out all the data
+const clearButton = document.querySelector("#clear");
+clearButton.addEventListener('click', clearData);
+
+function clearData() {
+    // reset the calculation object to blank state
+    storedCalculation = {
+        ...DEFAULT_CALCULATION
+    }
+    // wipe out the current number value
+    currentNumber = '0';
+    // display the current number
+    display(currentNumber);
 }
