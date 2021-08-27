@@ -21,8 +21,8 @@ function operate(operator, a, b) {
 
 // Create an object that holds all the values and operator
 let storedCalculation = {
-    storedNum: null,
-    // sencondNum: null,
+    firstNum: null,
+    secondNum: null,
     operator: null, 
     result: 0,
 }
@@ -52,17 +52,20 @@ operators.forEach(operator => {
 })
 
 function executeOperation() {
-    if (!storedCalculation.storedNum) {
-        storedCalculation.storedNum = Number(currentNumber);
-    } else {
-        let result = operate(storedCalculation.operator, storedCalculation.storedNum, Number(currentNumber));
-        storedCalculation.storedNum = result;
+    if (!storedCalculation.firstNum) {
+        storedCalculation.firstNum = Number(currentNumber);
+        currentNumber = '';
+    } else if (isValidOperation()) {
+        let result = operate(storedCalculation.operator, storedCalculation.firstNum, Number(currentNumber));
+        storedCalculation.firstNum = result;
         display(result);
-
-    }  
+        currentNumber = '';
+    }
     storedCalculation.operator = assignOperator(this.id);
-    currentNumber = '';
-    console.log("Current number: " + currentNumber)
+}
+
+function isValidOperation() {
+    return storedCalculation.firstNum && storedCalculation.operator && currentNumber;
 }
 
 // Return operator function based on the string input
