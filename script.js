@@ -134,3 +134,14 @@ function putDecimal() {
 function checkDecimal(num) {
     return num.indexOf('.') > -1;
 }
+
+// Backspace button remote digit one by one
+const backspace = document.querySelector("#backspace");
+backspace.addEventListener('click', removeDigit);
+
+function removeDigit() {
+    if (currentNumber) {
+        currentNumber = currentNumber.slice(0,currentNumber.length-1);
+    }
+    display(currentNumber);
+}
