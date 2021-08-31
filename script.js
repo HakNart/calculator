@@ -119,3 +119,17 @@ function clearData() {
     // display the current number
     display(currentNumber);
 }
+
+// Click the (.) button generate floating point number
+const decimal = document.querySelector("#decimal");
+decimal.addEventListener('click', putDecimal);
+
+function putDecimal() {
+    if (!checkDecimal(currentNumber)) {
+        currentNumber += ".";
+    }
+}
+
+function checkDecimal(num) {
+    return num.indexOf('.') > -1;
+}
