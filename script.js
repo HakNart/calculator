@@ -128,6 +128,7 @@ function putDecimal() {
     if (!checkDecimal(currentNumber)) {
         currentNumber += ".";
     }
+    display(currentNumber);
 }
 
 function checkDecimal(num) {
