@@ -19,20 +19,24 @@ body {
 #calculator {
     border: 1px solid black;
     /* width: 450px; */
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 20px 8px 8px 10px;
+    background-color: #343742b0;
 }
 
 #display {
     /* width: 100%; */
-    max-width: 351px;
+    box-sizing: border-box;
+    width: 354px;
     height: 68px;
-    border: 1px solid blue;
+    border: 3px solid black;
     margin: 10px auto;
     text-align: right;
-    vertical-align: middle;
     line-height: 68px; /*center the text horizontally */
     font-size: 1.5em;
+    background-color: #ffefd0fd;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 8px;
 }
 
 #buttons {
@@ -48,4 +52,7 @@ button {
     font-size: 1em;
     width: 81px;
     height: 68px;
+    background-color: #ffefd0fd;
+    border: 3px solid black;
+    border-radius: 10%;
 }
