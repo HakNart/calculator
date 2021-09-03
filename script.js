@@ -86,6 +86,14 @@ function checkOperation() {
     } 
 }
 
+// Square root operation - calculate the square root of the current number inputted
+const sqrtButton = document.querySelector("#sqrt");
+sqrtButton.addEventListener('click', () => {
+    let result = Math.sqrt(Number(currentNumber));
+    currentNumber = result;
+    display(result);
+})
+
 // Round the number up to 6 decimal
 function round(value) {
     return Number(Math.round(value + 'e6') + 'e-6') //Can change the decimal number for other function
