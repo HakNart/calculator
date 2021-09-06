@@ -45,14 +45,16 @@ function display(num) {
 let currentNumber = '0';
 const digitButtons = document.querySelectorAll(".digit");
 digitButtons.forEach(digitButton => {
-    digitButton.addEventListener('click', fillDigit)
+    digitButton.addEventListener('click', event => {
+        fillDigit(event.target.id);
+    })
 });
 
-function fillDigit() {
+function fillDigit(digitString) {
     if (currentNumber === '0') {
-        currentNumber = this.textContent;
+        currentNumber = digitString;
     } else {
-        currentNumber += this.textContent;
+        currentNumber += digitString;
     }
     display(currentNumber);
 }
@@ -60,10 +62,12 @@ function fillDigit() {
 // Handle opertors when clicked
 const operators = document.querySelectorAll(".operator");
 operators.forEach(operator => {
-    operator.addEventListener('click', executeOperation);
+    operator.addEventListener('click', (event) => {
+        executeOperation(event.target.id);
+    });
 })
 
-function executeOperation() {    
+function executeOperation(operator) {    
     if (!storedCalculation.firstNum) {
         storedCalculation.firstNum = Number(currentNumber);
         currentNumber = '';
@@ -77,7 +81,8 @@ function executeOperation() {
         display(round(result));
         currentNumber = '';
     }
-    storedCalculation.operator = assignOperator(this.id);
+    storedCalculation.operator = assignOperator(operator);
+    console.log(storedCalculation);
 }
 
 function checkOperation() {
@@ -106,14 +111,19 @@ function round(value) {
 function assignOperator(str) {
     switch (str) {
         case 'division':
+        case '/':
             return divide;
         case 'multiplication':
+        case '*':
             return multiply;
         case 'subtraction':
+        case '-':
             return subtract;
         case 'addition':
+        case '+':
             return add;
         case 'power':
+        case '^':
             return power;
     }
 }
@@ -158,3 +168,35 @@ function removeDigit() {
     }
     display(currentNumber);
 }
+
+// KEYBOARD SUPPORT
+// List of supported keys
+const SUPPORTED_KEYS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'Backspace', 'Escape', '.', 'Enter', '+', '-', '/', '*', '^'];
+const OPERATOR_KEYS = ['Enter', '+', '-', '/', '*', '^'];
+// Add event for keyboard for selective keys
+document.addEventListener('keyup', (event) => {
+    const keyName = event.key;
+    console.log(keyName);
+    if(SUPPORTED_KEYS.includes(keyName)) {
+        if (OPERATOR_KEYS.includes(keyName)) {
+            console.log(keyName);
+            executeOperation(keyName);
+        } else {
+            switch (keyName) {
+                case "Backspace":
+                    removeDigit();
+                    break;
+                case "Escape":
+                    clearData();
+                    break;
+                case ".":
+                    putDecimal();
+                    break;
+                default:
+                    fillDigit(keyName);
+                    break;
+            }
+        }
+        
+    }
+})
