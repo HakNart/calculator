@@ -20,8 +20,9 @@ body {
 #calculator {
     border: 1px solid black;
     /* width: 450px; */
-    padding: 20px 8px 8px 10px;
+    padding: 20px 13px 15px 10px;
     background-color: #343742b0;
+    border-radius: 12px;
 }
 
 #display {
