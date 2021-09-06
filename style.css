@@ -34,7 +34,7 @@ body {
     text-align: right;
     line-height: 68px; /*center the text horizontally */
     font-size: 1.5em;
-    background-color: #ffefd0fd;
+    background-color: #dff1fcfd;
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 8px;
@@ -53,7 +53,7 @@ button {
     font-size: 1em;
     width: 81px;
     height: 68px;
-    background-color: #ffefd0fd;
+    background-color: #dff1fcfd;
     border: 3px solid black;
     border-radius: 10%;
 }
