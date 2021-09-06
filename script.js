@@ -15,6 +15,10 @@ function divide(a, b) {
     return a / b;
 }
 
+function power(a, b) {
+    return a**b;
+}
+
 function operate(operator, a, b) {
     return operator(a, b);
 }
@@ -74,7 +78,6 @@ function executeOperation() {
         currentNumber = '';
     }
     storedCalculation.operator = assignOperator(this.id);
-    
 }
 
 function checkOperation() {
@@ -110,6 +113,8 @@ function assignOperator(str) {
             return subtract;
         case 'addition':
             return add;
+        case 'power':
+            return power;
     }
 }
 
