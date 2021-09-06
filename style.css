@@ -56,6 +56,17 @@ button {
     background-color: #dff1fcfd;
     border: 3px solid black;
     border-radius: 10%;
+    box-shadow: 3px 3px rgb(5, 5, 5);
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:active {
+    box-shadow: 1px 1px rgb(5, 5, 5);
+    transform: translateY(2px);
+    transform: translateX(2px);
 }
 
 .non-operator {
