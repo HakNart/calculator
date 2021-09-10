@@ -46,7 +46,7 @@ let currentNumber = '0';
 const digitButtons = document.querySelectorAll(".digit");
 digitButtons.forEach(digitButton => {
     digitButton.addEventListener('click', event => {
-        fillDigit(event.target.id);
+        fillDigit(event.target.textContent);
     })
 });
 
