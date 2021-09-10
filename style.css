@@ -19,7 +19,6 @@ body {
 
 #calculator {
     border: 1px solid black;
-    /* width: 450px; */
     padding: 20px 13px 15px 10px;
     background-color: #343742b0;
     border-radius: 12px;
@@ -78,4 +77,15 @@ button:active {
 #backspace > i {
     font-size: 1.4em;
     line-height: 60px;
+}
+
+#nametag {
+    animation: color-change 1.5s infinite;
+}
+
+@keyframes color-change {
+    0% {color: rgb(164, 255, 161);}
+    33% {color:rgb(68, 161, 238); }
+    66% {color:rgb(255, 106, 106); }
+    100% {color:rgb(164, 255, 161); }
 }
