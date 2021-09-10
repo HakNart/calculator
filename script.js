@@ -106,6 +106,9 @@ sqrtButton.addEventListener('click', () => {
 
 // Round the number up to 6 decimal
 function round(value) {
+    if (Number(value) && Number(value) >= 1e11) {
+        return parseFloat(value).toExponential(7);
+    }
     return Number(Math.round(value + 'e10') + 'e-10') //Can change the decimal number for other function
 }
 
