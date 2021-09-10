@@ -51,8 +51,11 @@ digitButtons.forEach(digitButton => {
 });
 
 function fillDigit(digitString) {
+    console.log(currentNumber);
     if (currentNumber === '0') {
         currentNumber = digitString;
+    } else if (currentNumber.length >= 11) {
+        return;
     } else {
         currentNumber += digitString;
     }
@@ -82,7 +85,6 @@ function executeOperation(operator) {
         currentNumber = '';
     }
     storedCalculation.operator = assignOperator(operator);
-    console.log(storedCalculation);
 }
 
 function checkOperation() {
@@ -104,7 +106,7 @@ sqrtButton.addEventListener('click', () => {
 
 // Round the number up to 6 decimal
 function round(value) {
-    return Number(Math.round(value + 'e6') + 'e-6') //Can change the decimal number for other function
+    return Number(Math.round(value + 'e10') + 'e-10') //Can change the decimal number for other function
 }
 
 // Return operator function based on the string input
